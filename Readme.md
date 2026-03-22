@@ -1,29 +1,102 @@
-# Understanding-the-basic-principle-of-Optical-Communication-
-## Aim: 
-## Measurement of Numerical aperture of the fiber
-## Apparatus required:
-## Numerical Aperture measurement Jig
-## Procedure:
-## 1. Connect power supply to the board
-## 2. Connect one end of fiber cable to the output socket of emitter 1 circuit and the other end to the numerical aperture measurement jig. Hold the white screen facing the fiber such that its cut face is perpendicular to the axis of the fiber.
-## 3.Hold the white screen with 4 concentric circles (10, 15, 20 & 25mm diameter) vertically at a suitable distance to make the red spot from the fiber core coincide with 10mm circle.
-<img width="482" height="220" alt="image" src="https://github.com/user-attachments/assets/3014e09b-8fcd-43bf-8ccb-dc5db5547141" />
+# Dispersion-Compensation
+# Dispersion Compensation
 
-## 4. Record the distance from the fiber end, L and note the diameter W of the spot.
-## 5. Compute the numerical aperture from the formula 
-<img width="371" height="115" alt="image" src="https://github.com/user-attachments/assets/e8d66d15-8e27-494a-a273-223228b9ecb8" />
+## Objective
+Design and simulate a fiber optic system using dispersion-compensating fiber to reduce chromatic dispersion.
 
-## 6. Vary the distance between the screen and fiber optic cable and make it coincide with one of the concentric circles. Note the distance.
-## 7. Tabulate the various distances and diameter of the circles made on the white screen and compute the numerical aperture from the formula.
-## Tabulation:
+## Theory
+Dispersion-compensating fiber (DCF) provides an optical medium with a relatively large negative chromatic dispersion factor \(D(\lambda)\) at the operating wavelength.  
 
-<img width="878" height="1280" alt="image" src="https://github.com/user-attachments/assets/bffa6fdd-a6a9-4800-bec1-63d3bf2c201d" />
+If a transmission fiber of length \(L_{TF}\) is connected in series with a DCF of length \(L_{DCF}\), then the total chromatic dispersion is given by:
 
-<img width="1010" height="1280" alt="image" src="https://github.com/user-attachments/assets/842fc509-a682-4949-b046-8bd54ac364ea" />
+\[
+\Delta D_t(\lambda) = D_{TF}(\lambda) \cdot L_{TF} + D_{DCF}(\lambda) \cdot L_{DCF} \cdot \Delta \lambda
+\]
 
+where:
+- \(D_{TF}(\lambda)\) = chromatic dispersion factor for the transmission fiber  
+- \(D_{DCF}(\lambda)\) = chromatic dispersion factor for the DCF  
+- \(\Delta \lambda\) = transmitter spectral width  
 
-## Result:
+Similarly, the total attenuation loss of the two-fiber combination is:
+
+\[
+Loss = A_{TF} \cdot L_{TF} + A_{DCF} \cdot L_{DCF}
+\]
+
+Therefore, given target values for chromatic dispersion and attenuation loss plus specifications of the transmitter, fiber, and receiver, one can determine the lengths of the transmission fiber and the DCF by solving the above two equations simultaneously.
+
 ---
-Thus the Numerical aperture of the fiber is measured.
+
+## Specifications
+- **Output power:** 0 dBm  
+- **Spectral width:** To be determined  
+- **Operating wavelength:** 1550 nm  
+- **Transmitter bit rate:** 2.5 Gb/s  
+- **Transmission Fiber:** Corning SMF-28  
+- **DCF:** See below  
+- **Receiver sensitivity:** -35 dBm  
+- **System margin + coupling loss attenuation:** 6 dB  
+
+**DCF Parameters:**  
+- Chromatic dispersion factor: –200 ps/nm-km at 1550 nm  
+- Attenuation: 0.5 dB/km at 1550 nm  
 
 ---
+
+## Calculations
+1. Determine the maximum allowable fiber loss  
+2. Determine the maximum allowable chromatic dispersion  
+3. Based on the results of (1) and (2), determine the lengths of the transmission fiber and the DCF  
+
+---
+
+## Layout
+The main physical components of this layout are:
+1. **Transmitter:** Bit sequence generator, non-return to zero (NRZ) pulse generator, and a laser  
+2. **Transmission fiber**  
+3. **Dispersion compensation fiber (DCF)**  
+4. **Receiver:** PIN detector and electrical filter  
+
+**Notes:**  
+- The NRZ scheme is used here. The signal does not return to zero between successive 1 bits, resulting in a narrower spectral width than a return-to-zero scheme.  
+- Visualizer components included:  
+  - Three Optical Time Domain visualizers (at transmitter output, after transmission fiber, and at the end of DCF)  
+  - One Optical Spectrum Analyzer (at transmitter output, used to estimate spectral width)  
+
+---
+
+## Procedure
+- Adjust the laser power to obtain 0 dBm transmission output.  
+- Use the optical spectrum analyzer to determine the spectral width of the signal.  
+  - Expect uncertainty since the spectrum is not clean.  
+  - Provide a screen capture showing markers used to determine spectral width.  
+- Set appropriate fiber lengths based on pre-lab calculations.  
+- Run the simulation with all parameters set according to specifications.  
+- Generate screen captures for inclusion in the report.  
+- Measure:  
+  - Optical power at receiver input  
+  - Maximum Q factor  
+  - Minimum BER  
+- Record:  
+  - Eye diagram  
+  - Optical waveforms at transmitter output, junction between fibers, and receiver input  
+
+---
+
+## Further Simulation and Analysis
+- Set the DCF length to 0 and run the simulation again.  
+- Record similar measurements for comparison.  
+
+---
+
+## Tabulation
+
+<img width="878" height="1280" alt="image" src="https://github.com/user-attachments/assets/0bba86cb-9b92-40b8-a913-48ded328b173" />
+
+<img width="1010" height="1280" alt="image" src="https://github.com/user-attachments/assets/639c463b-a534-47af-b205-a96684254622" />
+
+## Conclusions
+
+
+Discuss the effectiveness of dispersion-compensating fiber and the ability of the calculations to engineer a viable system.
