@@ -4,25 +4,10 @@
 ## Objective
 Design and simulate a fiber optic system using dispersion-compensating fiber to reduce chromatic dispersion.
 
+
 ## Theory
-Dispersion-compensating fiber (DCF) provides an optical medium with a relatively large negative chromatic dispersion factor \(D(\lambda)\) at the operating wavelength.  
+<img width="1398" height="500" alt="image" src="https://github.com/user-attachments/assets/a922bb4a-e871-4643-96a5-b78350cfb8d1" />
 
-If a transmission fiber of length \(L_{TF}\) is connected in series with a DCF of length \(L_{DCF}\), then the total chromatic dispersion is given by:
-
-\[
-\Delta D_t(\lambda) = D_{TF}(\lambda) \cdot L_{TF} + D_{DCF}(\lambda) \cdot L_{DCF} \cdot \Delta \lambda
-\]
-
-where:
-- \(D_{TF}(\lambda)\) = chromatic dispersion factor for the transmission fiber  
-- \(D_{DCF}(\lambda)\) = chromatic dispersion factor for the DCF  
-- \(\Delta \lambda\) = transmitter spectral width  
-
-Similarly, the total attenuation loss of the two-fiber combination is:
-
-\[
-Loss = A_{TF} \cdot L_{TF} + A_{DCF} \cdot L_{DCF}
-\]
 
 Therefore, given target values for chromatic dispersion and attenuation loss plus specifications of the transmitter, fiber, and receiver, one can determine the lengths of the transmission fiber and the DCF by solving the above two equations simultaneously.
 
@@ -83,6 +68,10 @@ The main physical components of this layout are:
   - Optical waveforms at transmitter output, junction between fibers, and receiver input  
 
 ---
+
+<img width="510" height="301" alt="image" src="https://github.com/user-attachments/assets/5f96d5a0-d291-469d-a21b-434e3db1efd2" />
+<img width="877" height="308" alt="image" src="https://github.com/user-attachments/assets/36a599d6-9c19-49d8-a278-706c97b86e77" />
+
 
 ## Further Simulation and Analysis
 - Set the DCF length to 0 and run the simulation again.  
